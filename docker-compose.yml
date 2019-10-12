@@ -1,0 +1,33 @@
+version: '3.6'
+
+networks:
+  crudenet:
+    external: true
+    name: localdev
+
+services:
+  php:
+    build:
+      context: .
+    networks:
+        - crudenet
+    container_name: crudexample
+    restart: on-failure
+    environment:
+      VIRTUAL_HOST: crudexample.docker
+    env_file:
+      - db.env
+    volumes:
+      - ./code:/var/www/html
+    depends_on:
+      - phpdb
+  phpdb:
+    image: mariadb:10
+    networks:
+        - crudenet
+    container_name: crudexample-db
+    restart: on-failure
+    env_file:
+      - db.env
+    volumes:
+      - ./docker/local/mysql:/var/lib/mysql

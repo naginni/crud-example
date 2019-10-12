@@ -1,0 +1,50 @@
+<form method="post" action="?page=update">
+    <input type="hidden" class="form-control" name="data[method]" placeholder="name" value="{{ method }}">
+    <input type="hidden" class="form-control" name="data[id]" placeholder="name" value="{{ pets.id }}">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="data[name]" placeholder="name" value="{{ pets.name }}">
+  </div>
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select class="form-control" name="data[status]">
+      <option
+          value="available"
+          {% if pets.status == 'available'%} selected {% endif %}
+      >
+          Avaible
+      </option>
+      <option
+          value="pending"
+          {% if pets.status == 'pending'%} selected {% endif %}
+      >
+          Pending
+      </option>
+      <option
+          value="sold"
+          {% if pets.status == 'sold'%} selected {% endif %}
+      >
+          Sold
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <textarea class="form-control" name="data[category]" rows="3">
+        {{ pets.category | json_encode() }}
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="photoUrls">Photos</label>
+    <textarea class="form-control" name="data[photoUrls]" rows="3">
+        {{ pets.photoUrls | json_encode() }}
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="tags">Tags</label>
+    <textarea class="form-control" name="data[tags]" rows="3">
+        {{ pets.tags | json_encode() }}
+    </textarea>
+  </div>
+  <input class="btn btn-primary" type="submit" value="Submit">
+</form>

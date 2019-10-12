@@ -1,0 +1,16 @@
+{
+    "name": "crudexample",
+    "type": "project",
+    "require": {
+       "twig/twig": "~2.0"
+    },
+    "authors": [
+        {
+            "name": "Jeffersson",
+            "email": "yfreldragon@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Example\\": "src/"}
+    }
+}
